@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="static/style1.css">
+</head>
+
+<body>
+	<form action="log" method="post">
+		{% csrf_token %}
+
+
+
+		<div class="login-wrap">
+			<div class="login-html">
+				<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign
+					In</label>
+				<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
+				<div class="login-form">
+					<div class="sign-in-htm">
+						<div class="group">
+							<label for="user" class="label">Username</label>
+							<input name="user" type="text" class="input">
+						</div>
+						<div class="group">
+							<label for="pass" class="label">Password</label>
+							<input name="password" type="password" class="input" data-type="password">
+						</div>
+						<div class="group">
+							<input id="check" type="checkbox" class="check" checked>
+							<label for="check"><span class="icon"></span> Keep me Signed in</label>
+						</div>
+
+						<div class="group sign-in-button">
+							<input type="submit" class="button" value="Sign In">
+						</div>
+
+						<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+						<script>
+							$(document).ready(function () {
+								$('.sign-in-button').toggle($('#check').is(':checked'));
+								$('#check').on('change', function () {
+									$('.sign-in-button').toggle($(this).is(':checked'));
+								});
+							});
+						</script>
+
+
+						<div class="hr"></div>
+						<div class="foot-lnk">
+							<a href="#forgot">Forgot Password?</a>
+						</div><br><br>
+						<div style="text-align: center;">
+							<a href="register" style="background-color: #1161ee; color: #fff; border: none;
+								padding: 10px 20px;font-size: 16px; font-weight: bold; 
+											 cursor: pointer;">Sign Up</a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	{% for msg in messages %}
+	{{msg}}
+	{% endfor %}
+</body>
+
+</html>
